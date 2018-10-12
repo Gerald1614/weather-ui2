@@ -1,14 +1,14 @@
 <template>
-  <v-container fluid grid-list-sm>
-    <v-layout row wrap>
-      <sensor-data></sensor-data>
+  <v-container pa-1 ma-1 fluid grid-list-sm >
+    <v-layout pa-1 ma-1 row wrap justify-space-between>
+        <sensor-data></sensor-data>
     </v-layout>
-    <v-layout row wrap>
-      <v-flex xs-6>
+    <v-layout pa-1 ma-1 row wrap justify-space-between>
+      <v-flex xs6>
         <Forecast24></Forecast24>
         <forecast-week></forecast-week>
       </v-flex>
-      <v-flex xs-6>
+      <v-flex xs6>
         <picture-day></picture-day>
       </v-flex>
     </v-layout>

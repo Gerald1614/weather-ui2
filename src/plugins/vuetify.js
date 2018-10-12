@@ -5,6 +5,7 @@ import {
   VList,
   VBtn,
   VIcon,
+  VImg,
   VGrid,
   VToolbar,
   transitions
@@ -17,6 +18,7 @@ Vue.use(Vuetify, {
     VList,
     VBtn,
     VIcon,
+    VImg,
     VGrid,
     VToolbar,
     transitions

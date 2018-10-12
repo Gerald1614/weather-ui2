@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app dark>
     <weather></weather>
   </v-app>
 </template>
@@ -18,6 +18,10 @@ export default {
 }
 </script>
 <style lang="stylus">
+.theme--dark.application
+  background-color : black
+
+
 .application
   font-family: 'Josefin Sans'
 </style>
