@@ -25,7 +25,7 @@ export default {
 div
   display: flex
   border: 2px solid white
-  max-width: 36vw
+  max-width: 38vw
 
 .v-image
   max-height: 50vh

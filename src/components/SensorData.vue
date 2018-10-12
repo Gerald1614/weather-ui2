@@ -23,14 +23,15 @@
             </v-flex>
         </v-layout>
         <hr class="teal">
-          <v-layout d-inline-flex row wrap >
-            <v-flex xs-5 class="text-xs-center">
+          <v-layout row wrap>
+            <v-flex px-2 xs6 class="text-xs-right">
+              <v-icon size="72" color="red">mdi-thermometer</v-icon>
+            </v-flex>
+            <v-flex xs-6 class="text-xs-left">
               <p class="lime--text display-1 underLined">{{ sensor.temperature_C }}  °C</p>
               <p class="title text-uppercase">Temp. Ext.</p>
             </v-flex>
-            <v-flex  px-2 xs2>
-              <v-icon size="72" color="red">mdi-thermometer</v-icon>
-            </v-flex>
+
         </v-layout>
       </v-flex>
       
@@ -62,7 +63,7 @@ export default {
 <style lang="stylus" scoped>
 hr
   margin: 4%
-
+  
 .underLined
   border-bottom: 2px solid OrangeRed
   display: inline-block
