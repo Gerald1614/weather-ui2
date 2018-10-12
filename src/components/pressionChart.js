@@ -8,7 +8,8 @@ export default {
         labels: ['H-2', 'H-90mn', 'H-1', 'H-30mn', 'H'],
         datasets: [
           {
-            backgroundColor: '#f87979',
+            backgroundColor: '#00695C',
+            hoverBackgroundColor: '#009688',
             data: this.$store.getters.receivedSensorData.data.reverse().map(pressure => (pressure.pressure_hPa))
           }
         ]

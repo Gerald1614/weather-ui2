@@ -1,14 +1,13 @@
 <template>
-  <v-container>
+  <div>
     <v-img v-if="pictureDay" contain :src="pictureDay"></v-img>
-  </v-container>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'PictureDay',
   computed: {
-
       pictureDay() {
         if (this.$store.getters.receivedSensorData) {
           let linkPicture = this.$store.getters.receivedSensorData.pictureDay
@@ -17,18 +16,18 @@ export default {
         } else {
           return null
         }
-
-      } 
-
+      }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
+div
+  display: flex
+  border: 2px solid white
+  max-width: 36vw
 
-.container
-  margin:0
-  padding:0
 .v-image
   max-height: 50vh
+
 </style>
