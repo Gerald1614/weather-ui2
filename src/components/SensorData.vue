@@ -1,7 +1,7 @@
 <template>
   <v-container fluid fill-height pa-1 ma-1 v-if="sensorDataReceived">
     <v-layout pa-1 ma-1 row wrap align-center>
-      <v-flex xs4>
+      <v-flex xs5>
         <v-layout row wrap align-center justify-center>
           <v-flex xs5 class="text-xs-center">
             <p class="lime--text display-1 underLined"> {{ sensorDataReceived.data[0].temperature_C }} °C </p>
@@ -25,7 +25,7 @@
         <hr class="teal">
           <v-layout row wrap align-center>
             <v-flex px-2 xs4 class="text-xs-right">
-              <v-icon size="72" color="red">mdi-thermometer</v-icon>
+              <v-icon size="72" color="#D84315">mdi-thermometer</v-icon>
             </v-flex>
             <v-flex xs4 class="text-xs-center">
               <p class="lime--text display-1 underLined">{{ currentWeatherData.main.temp }}  °C</p>
@@ -37,7 +37,7 @@
         </v-layout>
       </v-flex>
       
-      <v-flex xs8>
+      <v-flex xs7>
         <pression-chart></pression-chart>
       </v-flex>
     </v-layout>
@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import pressionChart from './pressionChart.js'
+import pressionChart from '../charts/pressionChart.js'
 export default {
   name: 'SensorData',
   components: { pressionChart },
@@ -55,9 +55,6 @@ export default {
     return {
       cloudIcon: null,
     }
-  },
-  mounted() {
-    this.$store.dispatch('getCurrentWeather')
   },
   computed: {
     currentWeatherData () {
@@ -84,7 +81,7 @@ hr
   margin: 4%
   
 .underLined
-  border-bottom: 2px solid OrangeRed
+  border-bottom: 2px solid #D84315
   display: inline-block
   margin-bottom: 4%
 
