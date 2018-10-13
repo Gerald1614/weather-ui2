@@ -1,7 +1,5 @@
 <template>
-  <div>
     <v-img v-if="pictureDay" contain :src="pictureDay"></v-img>
-  </div>
 </template>
 
 <script>
@@ -22,12 +20,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-div
-  display: flex
-  border: 2px solid white
-  max-width: 38vw
-
 .v-image
-  max-height: 50vh
-
+  max-height: 56vh
+  border: 4px solid white
+  max-width: 34vw
 </style>
