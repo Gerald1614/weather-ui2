@@ -7,6 +7,7 @@ import {
   VIcon,
   VImg,
   VGrid,
+  VProgressCircular,
   VToolbar,
   transitions
 } from 'vuetify'
@@ -20,6 +21,7 @@ Vue.use(Vuetify, {
     VIcon,
     VImg,
     VGrid,
+    VProgressCircular,
     VToolbar,
     transitions
   },

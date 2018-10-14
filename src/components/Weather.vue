@@ -1,15 +1,29 @@
 <template>
   <v-container pa-1 ma-1 fluid grid-list-sm >
-    <v-layout pa-1 ma-1 row wrap>
-        <sensor-data></sensor-data>
+    <v-layout pa-1 ma-1 row wrap align-center>
+      <sensor-data></sensor-data>
     </v-layout>
-    <v-layout pa-1 ma-1 row wrap>
-      <v-flex xs7>
-        <Forecast24 pa-2 v-if="!alt && this.$store.getters.getForecast" :forecast-weather-data="forecastWeatherData"></Forecast24>
-        <forecast-week pa-2  v-if="alt"></forecast-week>
+    <v-layout pa-1 ma-1 row wrap align-center>
+      <v-flex xs6 class="text-xs-center">
+        <v-progress-circular
+          v-if="!forecastWeatherData"
+          :size="60"
+          :width="7"
+          color="blue"
+          indeterminate
+        ></v-progress-circular>
+        <Forecast24 pa-2 v-if="!isSwitchPageOn && forecastWeatherData"></Forecast24>
+        <forecast-week pa-2  v-if="isSwitchPageOn && forecastWeatherData"></forecast-week>
       </v-flex>
-      <v-flex xs5>
-        <picture-day></picture-day>
+      <v-flex xs6 class="text-xs-center">
+        <v-progress-circular
+          v-if="!isSensorDataLoaded"
+          :size="60"
+          :width="7"
+          color="#D84315"
+          indeterminate
+        ></v-progress-circular>
+        <picture-day v-if="isSensorDataLoaded"></picture-day>
       </v-flex>
     </v-layout>
 
@@ -29,23 +43,22 @@ export default {
     ForecastWeek,
     SensorData
   },
-  data () {
-    return {
-      alt: false
-    }
-  },
   computed: {
+
+    isCurrentDataLoaded () {
+      return this.$store.getters.getWeather
+    },
+    isSensorDataLoaded () {
+      return this.$store.getters.receivedSensorData
+    },
+    isSwitchPageOn () {
+      return this.$store.getters.getChannel
+    },
     forecastWeatherData () {
-      if (this.$store.getters.getForecast) {
-        let table = this.$store.getters.getForecast.list
-        console.log(table)
-        // reverse().map(pressure => (pressure.pressure_hPa))
         return this.$store.getters.getForecast
-      } 
     }
   },
-  mounted() {
-
+  created() {
     this.$store.dispatch('getForecastWeather')
     this.$store.dispatch('getCurrentWeather')
     setInterval(() => {

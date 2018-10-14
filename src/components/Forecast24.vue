@@ -7,7 +7,6 @@ import Forecast24Chart from '../charts/forecast24.js'
 export default {
   name: 'Forecast24',
   components: { Forecast24Chart },
-  props: ['forecastWeatherData'],
     data () {
     return {
       datacollection: null,
@@ -47,13 +46,17 @@ export default {
       }
     }
   },
-  
+computed: {
+    forecastWeatherData () {
+        return this.$store.getters.getForecast
+    }
+},
 mounted () {
   this.fillData()
 },
 methods: {
   fillData () {
-    let tableData = this.forecastWeatherData.list.slice(0, 8)
+    let tableData = this.forecastWeatherData.list.slice(0, 9)
     console.log(tableData)
     let timing = tableData.map(time => {
       let x = new Date(time.dt_txt)
@@ -63,7 +66,6 @@ methods: {
       let tmp = tableData.map(x => x.main.temp)
       let tmp_max = tableData.map(x => x.main.temp_max)
       let tmp_min = tableData.map(x => x.main.temp_min)
-    console.log(timing)
     this.datacollection = {
         labels: timing,
         datasets: [

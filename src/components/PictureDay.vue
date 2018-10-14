@@ -1,27 +1,34 @@
 <template>
-    <v-img v-if="pictureDay" contain :src="pictureDay"></v-img>
+    <img max-width="100%" :height="PicHeight" v-if="imageDay" :src="imageDay"/>
 </template>
 
 <script>
+
 export default {
   name: 'PictureDay',
+  data() {
+    return {
+      PicWidth1: null,
+      PicHeight1: null
+    }
+  },
   computed: {
-      pictureDay() {
+      PicHeight () {
+        return window.innerHeight * 0.42
+      },
+ 
+      imageDay () {
         if (this.$store.getters.receivedSensorData) {
           let linkPicture = this.$store.getters.receivedSensorData.pictureDay
           console.log(`${process.env.VUE_APP_SERVER_ADDRESS}/pictureDay/${linkPicture}`)
           return process.env.VUE_APP_SERVER_ADDRESS+ '/pictureDay/' + linkPicture
-        } else {
-          return null
-        }
+        } 
       }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-.v-image
-  max-height: 56vh
+img 
   border: 4px solid white
-  max-width: 34vw
 </style>

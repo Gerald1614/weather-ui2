@@ -10,7 +10,8 @@ export default new Vuex.Store({
     connected: false,
     sensor: null,
     weather: null,
-    forecast: null
+    forecast: null,
+    switch_channel: null
   },
   mutations: {
     SOCKET_CONNECT: (state) => {
@@ -22,6 +23,10 @@ export default new Vuex.Store({
     SOCKET_SENSORDATA: (state, message) => {
       state.sensor = JSON.parse(message)
       console.log(state.sensor)
+    },
+    SOCKET_PAGEBTN: (state, message) => {
+      state.switch_channel = JSON.parse(message)
+      console.log(state.switch_channel)
     },
     GET_CURRENT_WEATHER (state, payload) {
       state.weather = payload
@@ -46,6 +51,9 @@ export default new Vuex.Store({
     },
     getForecast: (state) => {
       return state.forecast
+    },
+    getChannel: (state) => {
+      return state.switch_channel
     },
     receivedSensorData: (state) => {
       return state.sensor
