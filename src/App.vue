@@ -13,8 +13,21 @@ export default {
   },
   data () {
     return {
+      interval: null
     }
-  }
+  },
+
+  created: function () {
+    this.$store.dispatch('getForecastWeather')
+    this.$store.dispatch('getCurrentWeather')
+    this.interval = setInterval(() => {
+      this.$store.dispatch('getForecastWeather')
+      this.$store.dispatch('getCurrentWeather')
+    }, 9000000)
+    },
+   beforeDestroy: function(){
+      clearInterval(this.interval);
+    }
 }
 </script>
 <style lang="stylus">

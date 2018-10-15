@@ -70,15 +70,8 @@ export default {
     SwitchChannel() {
       this.$store.dispatch('switch_Channel')
     }
-  },
-  mounted() {
-    this.$store.dispatch('getForecastWeather')
-    this.$store.dispatch('getCurrentWeather')
-    setInterval(() => {
-      this.$store.dispatch('getForecastWeather')
-      this.$store.dispatch('getCurrentWeather')
-    }, 9000000)
-  },
+  }
+
 }
 </script>
 

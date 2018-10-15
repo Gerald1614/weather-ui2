@@ -31,7 +31,7 @@ export default {
         return this.$store.getters.getForecast
     },
     forecastDisplay () {
-      console.log(this.forecastWeatherData.list)
+      console.log(this.forecastWeatherData)
       let tableDisplay =[]
       let today= new Date(this.forecastWeatherData.list[0].dt_txt)
       for (let i=1; i<5; i++) {
