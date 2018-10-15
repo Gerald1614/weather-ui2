@@ -21,7 +21,6 @@ export default {
 .theme--dark.application
   background-color : black
 
-
 .application
   font-family: 'Josefin Sans'
 </style>

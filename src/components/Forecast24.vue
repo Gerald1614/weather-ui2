@@ -59,7 +59,9 @@ methods: {
     let tableData = this.forecastWeatherData.list.slice(0, 9)
     console.log(tableData)
     let timing = tableData.map(time => {
-      return new Date(time.dt_txt).getHours() + ' H'
+      let x = new Date(time.dt_txt)
+      let hour = new Date(x.setHours(x.getHours()-4))
+      return hour.getHours() + ' H'
       })
       let tmp = tableData.map(x => x.main.temp)
       let tmp_max = tableData.map(x => x.main.temp_max)

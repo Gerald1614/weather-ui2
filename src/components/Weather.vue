@@ -67,7 +67,7 @@ export default {
       this.$store.dispatch('switch_Channel')
     }
   },
-  created() {
+  mounted() {
     this.$store.dispatch('getForecastWeather')
     this.$store.dispatch('getCurrentWeather')
     setInterval(() => {
