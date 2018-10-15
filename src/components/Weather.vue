@@ -19,14 +19,16 @@
         </transition>
       </v-flex>
       <v-flex xs6 class="text-xs-center">
-        <v-progress-circular
-          v-if="!isSensorDataLoaded"
-          :size="60"
-          :width="7"
-          color="#D84315"
-          indeterminate
-        ></v-progress-circular>
-        <picture-day v-if="isSensorDataLoaded"></picture-day>
+        <transition name="fade" mode="out-in">
+          <v-progress-circular
+            v-if="!isSensorDataLoaded"
+            :size="60"
+            :width="7"
+            color="#D84315"
+            indeterminate
+          ></v-progress-circular>
+          <picture-day v-if="isSensorDataLoaded"></picture-day>
+        </transition>
       </v-flex>
     </v-layout>
 
