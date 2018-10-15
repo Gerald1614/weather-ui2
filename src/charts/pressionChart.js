@@ -36,7 +36,7 @@ export default {
         title: {
           display: true,
           text: 'PRESSION : ' + this.$store.getters.receivedSensorData.data[this.$store.getters.receivedSensorData.data.length - 1].pressure_hPa + ' hPa',
-          fontSize: 24,
+          fontSize: 20,
           fontFamily: "'Josefin Sans'",
           fontColor: 'white'
         },
