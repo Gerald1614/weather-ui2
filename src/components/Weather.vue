@@ -77,7 +77,7 @@ export default {
     setInterval(() => {
       this.$store.dispatch('getForecastWeather')
       this.$store.dispatch('getCurrentWeather')
-    }, 1800000)
+    }, 9000000)
   },
 }
 </script>
