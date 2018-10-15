@@ -13,8 +13,10 @@
           color="blue"
           indeterminate
         ></v-progress-circular>
+        <transition name="fade" mode="out-in">
         <Forecast24 pa-2 v-if="!isSwitchPageOn && forecastWeatherData"></Forecast24>
-        <forecast-week pa-2  v-if="isSwitchPageOn && forecastWeatherData"></forecast-week>
+          <forecast-week pa-2  v-if="isSwitchPageOn && forecastWeatherData"></forecast-week>
+        </transition>
       </v-flex>
       <v-flex xs6 class="text-xs-center">
         <v-progress-circular
@@ -79,5 +81,12 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 
 </style>

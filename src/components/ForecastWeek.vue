@@ -1,17 +1,17 @@
 <template>
 <v-container>
  <v-layout px-0 row wrap justify-space-between>
-    <v-flex xs2 v-for="(day, index) in forecastDisplay" :key="index">
-      <v-card color="blue-grey darken-4">
+    <v-flex xs3 v-for="(day, index) in forecastDisplay" :key="index">
+      <v-card color="blue-grey darken-3">
         <v-card-text>
           <v-flex class="text-xs-center">
-            <p class="subheading">{{ day.date | day }}</p>
-            <p class="subheading">{{ day.date | date }}</p>
+            <p class="title">{{ day.date | day }}</p>
+            <p class="title">{{ day.date | date }}</p>
           </v-flex>
 
         </v-card-text>
-        <v-card-text class="cardText">
-          <v-img :src="day.iconDay"></v-img>
+        <v-card-text class="cardText text-xs-center">
+          <img :src="day.iconDay" width="50%"/>
             <p class=" red--text title">{{ day.maxDay }} °C</p>
             <p class="blue--text title">{{ day.minDay }} °C</p>
         </v-card-text>
@@ -34,11 +34,11 @@ export default {
       console.log(this.forecastWeatherData.list)
       let tableDisplay =[]
       let today= new Date(this.forecastWeatherData.list[0].dt_txt)
-      for (let i=0; i<5; i++) {
+      for (let i=1; i<5; i++) {
         tableDisplay.push({'date': new Date(today.getFullYear(), today.getMonth(), today.getDate()+i)})
       }
-
-      for (let i=0; i<5; i++) {
+      console.log(tableDisplay)
+      for (let i=0; i<4; i++) {
         const Day = this.forecastWeatherData.list.filter( dateX => new Date(dateX.dt_txt).getDate() == tableDisplay[i].date.getDate())
         tableDisplay[i].minDay = this.getMinDay(Day).toFixed(1)
         tableDisplay[i].maxDay = this.getMaxDay(Day).toFixed(1)
@@ -72,7 +72,7 @@ export default {
 
 <style lang="stylus" scoped>
 .cardText
-  background-color: #455a64
+  background-color: #263238
 .v-card__text
   padding: 4px
 </style>

@@ -75,7 +75,7 @@
               </v-flex>
             </v-flex>
             <v-flex xs4 class="text-xs-center">
-              <v-img :src="cloudIcon" width="60%"></v-img>
+              <img :src="cloudIcon" width="50%"/>
             </v-flex>
         </v-layout>
       </v-flex>
