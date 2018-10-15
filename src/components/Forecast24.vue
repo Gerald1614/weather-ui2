@@ -36,7 +36,7 @@ export default {
         title: {
           display: true,
           text: 'Évolution températures sur 24 heures',
-          fontSize: 22,
+          fontSize: 18,
           fontFamily: "'Josefin Sans'",
           fontColor: 'white'
         },
@@ -59,9 +59,7 @@ methods: {
     let tableData = this.forecastWeatherData.list.slice(0, 9)
     console.log(tableData)
     let timing = tableData.map(time => {
-      let x = new Date(time.dt_txt)
-      let hour = new Date(x.setHours(x.getHours()-4))
-      return hour.getHours() + ' H'
+      return new Date(time.dt_txt).getHours() + ' H'
       })
       let tmp = tableData.map(x => x.main.temp)
       let tmp_max = tableData.map(x => x.main.temp_max)

@@ -11,7 +11,7 @@ export default new Vuex.Store({
     sensor: null,
     weather: null,
     forecast: null,
-    switch_channel: null
+    switch_channel: false
   },
   mutations: {
     SOCKET_CONNECT: (state) => {
@@ -24,8 +24,8 @@ export default new Vuex.Store({
       state.sensor = JSON.parse(message)
       console.log(state.sensor)
     },
-    SOCKET_PAGEBTN: (state, message) => {
-      state.switch_channel = JSON.parse(message)
+    SOCKET_PAGEBTN: (state) => {
+      state.switch_channel = !state.switch_channel
       console.log(state.switch_channel)
     },
     GET_CURRENT_WEATHER (state, payload) {
@@ -43,6 +43,9 @@ export default new Vuex.Store({
     async getForecastWeather ({ commit }) {
       const data = await ForecastWeather.getForecastWeather()
       commit('GET_FORECAST_WEATHER', data.data)
+    },
+    switch_Channel ({ commit }) {
+      commit('SOCKET_PAGEBTN')
     }
   },
   getters: {

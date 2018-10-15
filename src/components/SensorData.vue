@@ -70,7 +70,7 @@
                 <v-icon size="72" color="#D84315">mdi-thermometer</v-icon>
               </v-flex>
               <v-flex class="text-xs-center">
-            <p class="lime--text display-1 underLined">{{ currentWeatherData.main.temp  }}  °C</p>
+            <p class="lime--text display-1 underLined">{{ currentWeatherData.main.temp  }} °C</p>
               <p class="title text-uppercase">Temp. Ext.</p>
               </v-flex>
             </v-flex>
@@ -144,7 +144,7 @@ export default {
 
 <style lang="stylus" scoped>
 hr
-  margin: 4%
+  margin: 2%
   
 .underLined
   border-bottom: 2px solid #D84315

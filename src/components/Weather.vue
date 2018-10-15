@@ -4,7 +4,8 @@
       <sensor-data></sensor-data>
     </v-layout>
     <v-layout pa-1 ma-1 row wrap align-center>
-      <v-flex xs6 class="text-xs-center">
+      <v-flex xs6 class="text-xs-center" @click="SwitchChannel">
+        <div class="lime--text title">{{ currentDate }}</div>
         <v-progress-circular
           v-if="!forecastWeatherData"
           :size="60"
@@ -44,7 +45,10 @@ export default {
     SensorData
   },
   computed: {
-
+    currentDate () {
+      let dt = new Date()
+      return dt.toDateString()
+    },
     isCurrentDataLoaded () {
       return this.$store.getters.getWeather
     },
@@ -56,6 +60,11 @@ export default {
     },
     forecastWeatherData () {
         return this.$store.getters.getForecast
+    }
+  },
+  methods: {
+    SwitchChannel() {
+      this.$store.dispatch('switch_Channel')
     }
   },
   created() {
