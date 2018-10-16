@@ -16,14 +16,20 @@ export default {
       interval: null
     }
   },
-
+  methods: {
+    checkAPI() {
+      this.interval = setInterval(() => {
+        this.$store.dispatch('getForecastWeather')
+        this.$store.dispatch('getCurrentWeather')
+        console.log('API fetched')
+      }, 900000)
+    }
+  },
   created: function () {
     this.$store.dispatch('getForecastWeather')
     this.$store.dispatch('getCurrentWeather')
-    this.interval = setInterval(() => {
-      this.$store.dispatch('getForecastWeather')
-      this.$store.dispatch('getCurrentWeather')
-    }, 9000000)
+    console.log('API initial fetched ')
+    this.checkAPI()
     },
    beforeDestroy: function(){
       clearInterval(this.interval);

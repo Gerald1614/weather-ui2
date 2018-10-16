@@ -52,7 +52,7 @@
               indeterminate
             ></v-progress-circular>
           <v-layout v-if="isCurrentDataLoaded" row wrap align-end>
-            <v-flex px-2 xs4 class="text-xs-center">
+            <v-flex px-1 xs5 class="text-xs-center">
            <v-progress-circular
               :size="100"
               class="headline"
@@ -61,11 +61,11 @@
               :rotate="windRotate-95"
               :value="10"
             >{{ windDirection }}</v-progress-circular>
-              <p class="lime--text display-1  underLined">{{ currentWeatherData.wind.speed }}  m/s</p>
+              <p class="lime--text display-1  underLined">{{ currentWeatherData.wind.speed*3600/1000 }}  km/h</p>
 
               <p class="title text-uppercase">Vent</p>
             </v-flex>
-            <v-flex xs4 class="text-xs-center">
+            <v-flex xs5 class="text-xs-center">
               <v-flex class="text-xs-center">
                 <v-icon size="72" color="#D84315">mdi-thermometer</v-icon>
               </v-flex>
@@ -74,8 +74,8 @@
               <p class="title text-uppercase">Temp. Ext.</p>
               </v-flex>
             </v-flex>
-            <v-flex xs4 class="text-xs-center">
-              <img :src="cloudIcon" width="50%"/>
+            <v-flex xs2 mb-3 class="text-xs-center">
+              <img :src="cloudIcon" width="100%"/>
             </v-flex>
         </v-layout>
       </v-flex>
@@ -120,7 +120,6 @@ export default {
       }
     },
       windDirection () {
-        console.log(this.currentWeatherData.wind.deg)
         let deg =[22, 67, 112, 157, 202, 247, 292, 337]
         let direction = ['NE', 'East', 'SE', 'South', 'SW', 'West', 'NW', 'North']
         var result = deg.findIndex((el) => el > this.currentWeatherData.wind.deg )
