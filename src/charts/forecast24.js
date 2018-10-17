@@ -10,5 +10,11 @@ export default {
     if (this.$store.getters.getForecast) {
       this.renderChart(this.chartData, this.options)
     }
+  },
+  watch: {
+    chartData: function (x, y) {
+      console.log('forecast data changed - uopdate chart')
+      this.renderChart(this.chartData, this.options)
+    }
   }
 }

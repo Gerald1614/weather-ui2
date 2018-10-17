@@ -61,7 +61,7 @@
               :rotate="windRotate-95"
               :value="10"
             >{{ windDirection }}</v-progress-circular>
-              <p class="lime--text display-1  underLined">{{ currentWeatherData.wind.speed*3600/1000 }}  km/h</p>
+              <p class="lime--text display-1  underLined">{{ (currentWeatherData.wind.speed*3600/1000).toFixed(1) }}  km/h</p>
 
               <p class="title text-uppercase">Vent</p>
             </v-flex>

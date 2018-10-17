@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import CurrentWeather from './utils/currentweather'
-import ForecastWeather from './utils/forecast'
 
 Vue.use(Vuex)
 
@@ -22,28 +20,22 @@ export default new Vuex.Store({
     },
     SOCKET_SENSORDATA: (state, message) => {
       state.sensor = JSON.parse(message)
-      console.log(state.sensor)
+      console.log('capteur', state.sensor)
     },
     SOCKET_PAGEBTN: (state) => {
       state.switch_channel = !state.switch_channel
       console.log(state.switch_channel)
     },
-    GET_CURRENT_WEATHER (state, payload) {
-      state.weather = payload
+    SOCKET_CURRENTWEATHER (state, payload) {
+      state.weather = payload[0]
+      console.log('current weather', payload[0])
     },
-    GET_FORECAST_WEATHER (state, payload) {
-      state.forecast = payload
+    SOCKET_FORECASTWEATHER (state, payload) {
+      state.forecast = payload[0]
+      console.log(' forecast weather', payload[0])
     }
   },
   actions: {
-    async getCurrentWeather ({ commit }) {
-      const data = await CurrentWeather.getCurrentWeather()
-      commit('GET_CURRENT_WEATHER', data.data)
-    },
-    async getForecastWeather ({ commit }) {
-      const data = await ForecastWeather.getForecastWeather()
-      commit('GET_FORECAST_WEATHER', data.data)
-    },
     switch_Channel ({ commit }) {
       commit('SOCKET_PAGEBTN')
     }
