@@ -10,7 +10,7 @@ export default {
           {
             backgroundColor: '#00695C',
             hoverBackgroundColor: '#009688',
-            data: this.$store.getters.receivedSensorData.data.reverse().map(pressure => (pressure.pressure_hPa))
+            data: this.$store.getters.receivedSensorData.data.map(pressure => (pressure.pressure_hPa))
           }
         ]
       },
@@ -49,5 +49,11 @@ export default {
   mounted () {
     // Overwriting base render method with actual data.
     this.renderChart(this.datacollection, this.options)
+  },
+  watch: {
+    datacollection: function (x, y) {
+      console.log('pressure data changed - uopdate chart')
+      this.renderChart(this.chartData, this.options)
+    }
   }
 }

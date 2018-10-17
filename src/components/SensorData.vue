@@ -11,7 +11,7 @@
               color="#D84315"
               indeterminate
             ></v-progress-circular>
-            <p v-if="isSensorDataLoaded" class="lime--text display-1 underLined"> {{ sensorDataReceived.data[0].temperature_C }} °C </p>
+            <p v-if="isSensorDataLoaded" class="lime--text display-1 underLined"> {{ sensorDataReceived.data[sensorDataReceived.data.length-1].temperature_C }} °C </p>
             <p class="title text-uppercase" >Température</p>
           </v-flex>
           <v-flex xs2 class="text-xs-center">
@@ -25,7 +25,7 @@
               color="#D84315"
               indeterminate
             ></v-progress-circular>
-            <p v-if="isSensorDataLoaded" class="display-1 underLined"> {{ sensorDataReceived.data[0].humidity }} % </p>
+            <p v-if="isSensorDataLoaded" class="display-1 underLined"> {{ sensorDataReceived.data[sensorDataReceived.data.length-1].humidity }} % </p>
             <p class="title text-uppercase">Humidité</p>
           </v-flex>
         </v-layout>
