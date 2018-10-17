@@ -1,5 +1,5 @@
 <template>
-  <forecast24-chart  :chart-data="datacollection" :options="chartOptions"></forecast24-chart>
+  <forecast24-chart :chart-data="datacollection" :options="chartOptions"></forecast24-chart>
 </template>
 
 <script>

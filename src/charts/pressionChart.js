@@ -51,9 +51,9 @@ export default {
     this.renderChart(this.datacollection, this.options)
   },
   watch: {
-    datacollection: function (x, y) {
+    datacollection: function () {
       console.log('pressure data changed - uopdate chart')
-      this.renderChart(this.chartData, this.options)
+      this.renderChart(this.datacollection, this.options)
     }
   }
 }
