@@ -37,7 +37,7 @@ export default {
       for (let i=0; i<5; i++) {
         const Day = this.forecastWeatherData.list.filter( dateX => new Date(dateX.dt_txt).getDate() == today.getDate()+i)
         let tmpData={}
-      if (Day.length >4 ) {
+      if (Day.length >4 && tableDisplay.length <4) {
         tmpData.date =  new Date(today.getFullYear(), today.getMonth(), today.getDate()+i)
         tmpData.minDay = this.getMinDay(Day).toFixed(1)
         tmpData.maxDay = this.getMaxDay(Day).toFixed(1)
@@ -46,7 +46,6 @@ export default {
         tableDisplay.push(tmpData)
         }
       }
-      console.log(tableDisplay)
       return (tableDisplay)
     }
   },

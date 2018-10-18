@@ -6,7 +6,7 @@ This application is part of a project involving Raspberry Pi to build a Weather 
 The Project is a mix of technologies to provide on a screen information collected by weather sensors and data coming from public API. Because there was space left on the screen and it brings a nice touch, I added a slideshow of pictures located on a USB stick.
 
 ## Technologies used
-The idea here was to bring modularity not only in the way software is built ( so we can easily add new features) but also in order to be able to bring more devices to cover additional rooms or possibilities. I thus decided to build a back-end with Node JS on a raspberry pi 3 Model B communicating with a raspberry pi zero connected to sensors. I am using MQTT as a Message Queue to send data received from sensors to the backend and Socket.io to update the information presented to the user Interface. in fact, the raspberry pi zero has two roles has in addition to collect data form sensor and ship them to the back end, it also receive from the backend the presentation layer built on vueJS and served to the browser of the RPi Zero where the screen is also connected.
+The idea here was to bring modularity not only in the way software is built ( so we can easily add new features) but also in order to be able to bring more devices to cover additional rooms or possibilities. I thus decided to build a back-end with Node JS on a raspberry pi 3 Model B communicating with a raspberry pi zero connected to sensors. I am using MQTT as a Message Queue to send data received from sensors to the backend and Socket.io to update the information presented to the user Interface. in fact, the raspberry pi zero has two roles has in addition to collect data from sensor and ship them to the back end, it also receive from the backend the presentation layer built on vueJS and served to the browser of the RPi Zero where the screen is also connected.
 
 ## diagram of the solution
 ![diagram](/diagram-weather.jpg)
@@ -35,10 +35,10 @@ This project is my first RPI project but I wanted to consolidate in a single pro
  Basic VueJs application with only one page (this is the first iteration of the project and I am planning to use other pages). The application integrates various sources of information:
 
  * Sensor's data received through socket.io by the back end
- * data coming from an API
  * pictures served by the node js app
 
 This is a more stylish version of the old UI I built. I removed completely the widget as refreshing its content was not optimal. I now fully leverage [OpenWeatherMap](https://openweathermap.org/) for getting both current weather and 5 days forecast.  I am also using the event created by the RPI button or a click on the chart to toggle between two components (24 hours temp forecast or 5 days forecast)
+I also chanegd the architetcure to fetch API data in NOde JS and consume it at the browser level.
 I also leveraged Vuetify which is a very nice framework to style the application. I spent time finding the best way to optimise the positionning and size of the picture.
 
 

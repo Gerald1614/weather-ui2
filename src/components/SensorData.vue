@@ -88,7 +88,7 @@
             color="#D84315"
             indeterminate
           ></v-progress-circular>
-        <pression-chart v-if="isSensorDataLoaded" ></pression-chart>
+        <pression v-if="isSensorDataLoaded" ></pression>
       </v-flex>
     </v-layout>
 
@@ -97,10 +97,10 @@
 </template>
 
 <script>
-import pressionChart from '../charts/pressionChart.js'
+import pression from './pression'
 export default {
   name: 'SensorData',
-  components: { pressionChart },
+  components: { pression },
   data () {
     return {
       cloudIcon: null,

@@ -1,5 +1,5 @@
 <template>
-  <forecast24-chart :chart-data="datacollection" :options="chartOptions"></forecast24-chart>
+  <forecast24-chart :chart-data="datacollection" :options="options"></forecast24-chart>
 </template>
 
 <script>
@@ -9,8 +9,7 @@ export default {
   components: { Forecast24Chart },
     data () {
     return {
-      datacollection: null,
-      chartOptions: {
+      options: {
         showLines: true,
         scales: {
           yAxes: [{
@@ -49,15 +48,9 @@ export default {
 computed: {
     forecastWeatherData () {
         return this.$store.getters.getForecast
-    }
-},
-mounted () {
-  this.fillData()
-},
-methods: {
-  fillData () {
+    },
+    datacollection () {
     let tableData = this.forecastWeatherData.list.slice(0, 9)
-    console.log(tableData)
     let timing = tableData.map(time => {
       let x = new Date(time.dt_txt)
       let hour = new Date(x.setHours(x.getHours()-4))
@@ -66,7 +59,7 @@ methods: {
       let tmp = tableData.map(x => x.main.temp)
       let tmp_max = tableData.map(x => x.main.temp_max)
       let tmp_min = tableData.map(x => x.main.temp_min)
-    this.datacollection = {
+      return  {
         labels: timing,
         datasets: [
           {
@@ -87,6 +80,12 @@ methods: {
         ]
       }
     }
+    },
+ mounted () {
+console.log(this.datacollection)
+ },
+methods: {
+
   }
 }
 </script>

@@ -1,0 +1,60 @@
+<template>
+  <pression-chart :chart-data="datacollection" :options="options"></pression-chart>
+</template>
+
+<script>
+import PressionChart from '../charts/pressionChart.js'
+export default {
+  name: 'pression',
+  components: { PressionChart },
+  computed: {
+      datacollection() {
+        return {
+          labels: ['H-2', 'H-90mn', 'H-1', 'H-30mn', 'H'],
+          datasets: [
+          {
+            backgroundColor: '#00695C',
+            hoverBackgroundColor: '#009688',
+            data: this.$store.getters.receivedSensorData.data.map(pressure => (pressure.pressure_hPa))
+          }
+        ]
+        }
+        
+      }
+  },
+    data () {
+    return {
+      options: {
+        scales: {
+          yAxes: [{
+            gridLines: {
+              display: true,
+              color: 'SlateGray'
+            },
+            ticks: {
+              min: Number(this.$store.getters.receivedSensorData.PressureMin.pressure) - 0.2,
+              max: Number(this.$store.getters.receivedSensorData.PressureMax.pressure) + 0.2,
+              fontColor: 'white'
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              fontColor: 'white'
+            }
+          }]
+        },
+        title: {
+          display: true,
+          text: 'PRESSION : ' + this.$store.getters.receivedSensorData.data[this.$store.getters.receivedSensorData.data.length - 1].pressure_hPa + ' hPa',
+          fontSize: 20,
+          fontFamily: "'Josefin Sans'",
+          fontColor: 'white'
+        },
+        legend: { display: false },
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    }
+  },
+}
+</script>
