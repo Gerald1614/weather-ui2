@@ -53,7 +53,25 @@ export default {
           text: 'PRESSION : ' + this.sensorWeatherData.data[this.sensorWeatherData.data.length - 1].pressure_hPa + ' hPa',
           fontSize: 20,
           fontFamily: "'Josefin Sans'",
-          fontColor: 'white'
+          fontColor: '#D84315'
+        },
+        showAllTooltips: true,
+        tooltips: { 
+          enabled: true,
+          bodyFontSize: 20,
+          bodyFontFamily: "'Josefin Sans'",
+          callbacks: {
+            title: function(tooltipItem, data) {
+                return '';
+            },
+            label: function(tooltipItem, data) {
+                return tooltipItem.yLabel;
+            }, 
+
+            labelTextColor:function(tooltipItem, chart){
+                    return '#D84315';
+                }
+          }
         },
         legend: { display: false },
         responsive: true,

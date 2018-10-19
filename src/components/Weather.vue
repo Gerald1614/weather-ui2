@@ -5,7 +5,7 @@
     </v-layout>
     <v-layout pa-1 ma-1 row wrap align-center>
       <v-flex xs6 class="text-xs-center" @click="SwitchChannel">
-        <div class="lime--text title">{{ currentDate }}</div>
+        <div class="deep-orange--text title">{{ currentDate }}</div>
         <v-progress-circular
           v-if="!forecastWeatherData"
           :size="60"
