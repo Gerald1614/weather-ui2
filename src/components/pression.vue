@@ -8,6 +8,9 @@ export default {
   name: 'pression',
   components: { PressionChart },
   computed: {
+    sensorWeatherData () {
+        return this.$store.getters.receivedSensorData
+    },
       datacollection() {
         let data =  {
           labels: ['H-2', 'H-90mn', 'H-1', 'H-30mn', 'H'],
@@ -15,16 +18,16 @@ export default {
           {
             backgroundColor: '#00695C',
             hoverBackgroundColor: '#009688',
-            data: this.$store.getters.receivedSensorData.data.map(pressure => (pressure.pressure_hPa))
+            data: this.sensorWeatherData.data.map(pressure => (pressure.pressure_hPa))
           }
         ]
         }
+        console.log(data)
         return data
-      }
-  },
-    data () {
-    return {
-      options: {
+      },
+      options() {
+        let Opt =
+          {
         scales: {
           yAxes: [{
             gridLines: {
@@ -32,8 +35,8 @@ export default {
               color: 'SlateGray'
             },
             ticks: {
-              min: Number(this.$store.getters.receivedSensorData.PressureMin.pressure) - 0.2,
-              max: Number(this.$store.getters.receivedSensorData.PressureMax.pressure) + 0.2,
+              // min: Number(this.sensorWeatherData.PressureMin.pressure) - 1,
+              // max: Number(this.sensorWeatherData.PressureMax.pressure) + 1,
               fontColor: 'white',
               fontSize: 16
             }
@@ -47,7 +50,7 @@ export default {
         },
         title: {
           display: true,
-          text: 'PRESSION : ' + this.$store.getters.receivedSensorData.data[this.$store.getters.receivedSensorData.data.length - 1].pressure_hPa + ' hPa',
+          text: 'PRESSION : ' + this.sensorWeatherData.data[this.sensorWeatherData.data.length - 1].pressure_hPa + ' hPa',
           fontSize: 20,
           fontFamily: "'Josefin Sans'",
           fontColor: 'white'
@@ -56,6 +59,13 @@ export default {
         responsive: true,
         maintainAspectRatio: false
       }
+      console.log(Opt)
+      return Opt
+    }
+  },
+    data () {
+    return {
+
     }
   },
 }
