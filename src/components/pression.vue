@@ -9,7 +9,7 @@ export default {
   components: { PressionChart },
   computed: {
       datacollection() {
-        return {
+        let data =  {
           labels: ['H-2', 'H-90mn', 'H-1', 'H-30mn', 'H'],
           datasets: [
           {
@@ -19,7 +19,7 @@ export default {
           }
         ]
         }
-        
+        return data
       }
   },
     data () {
@@ -34,12 +34,14 @@ export default {
             ticks: {
               min: Number(this.$store.getters.receivedSensorData.PressureMin.pressure) - 0.2,
               max: Number(this.$store.getters.receivedSensorData.PressureMax.pressure) + 0.2,
-              fontColor: 'white'
+              fontColor: 'white',
+              fontSize: 16
             }
           }],
           xAxes: [{
             ticks: {
-              fontColor: 'white'
+              fontColor: 'white',
+              fontSize: 16
             }
           }]
         },

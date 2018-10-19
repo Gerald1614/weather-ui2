@@ -18,12 +18,17 @@ export default {
               color: 'SlateGray'
             },
             ticks: {
+              fontSize: 18,
               fontColor: 'white',
               fontFamily: "'Josefin Sans'",
+              callback: function(value, index, values) {
+                        return  value + ' °C';
+                    }
             }
           }],
           xAxes: [{
             ticks: {
+              fontSize: 18,
               fontColor: 'white',
               fontFamily: "'Josefin Sans'",
             },
@@ -54,7 +59,7 @@ computed: {
     let timing = tableData.map(time => {
       let x = new Date(time.dt_txt)
       let hour = new Date(x.setHours(x.getHours()-4))
-      return hour.getHours() + ' H'
+      return hour.getHours() + 'h'
       })
       let tmp = tableData.map(x => x.main.temp)
       let tmp_max = tableData.map(x => x.main.temp_max)
