@@ -11,6 +11,12 @@ export default {
     sensorWeatherData () {
         return this.$store.getters.receivedSensorData
     },
+    tableData () {
+      let dataNb = this.sensorWeatherData.data.length
+      let table = [...Array(5-dataNb)]
+      return table.concat(this.sensorWeatherData.data.map(pressure => (pressure.pressure_hPa)))
+
+    },
       datacollection() {
         let data =  {
           labels: ['H-2', 'H-90mn', 'H-1', 'H-30mn', 'H'],
@@ -18,7 +24,7 @@ export default {
           {
             backgroundColor: '#00695C',
             hoverBackgroundColor: '#009688',
-            data: this.sensorWeatherData.data.map(pressure => (pressure.pressure_hPa))
+            data: this.tableData
           }
         ]
         }
