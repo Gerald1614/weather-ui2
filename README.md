@@ -58,11 +58,10 @@ then you need to deploy the content of the dist folder to your server
 ## References
 
 Here are the links to the other applications that are part of the project:
-
-* the UI version 2: [bitbucket](https://bitbucket.org/gegeraptor/weather-ui-v2/src)
-* the UI version 1: [bitbucket](https://bitbucket.org/gegeraptor/weather-ui/src/master/)
-* the client node.js app running on the RPI zero : [bitbucket](https://bitbucket.org/gegeraptor/weather-client/src/master/)
-* the backend : [bitbucket](https://bitbucket.org/gegeraptor/weather-server/src/master/)
+* the UI version 2: [gitHub repo](https://github.com/Gerald1614/weather-ui)
+* UI : [gitHub repo](https://github.com/Gerald1614/weather-ui-old)
+* client node js app running on the RPI zero : [gitHub repo](https://github.com/Gerald1614/weather-client)
+* backend : [gitHub repo](https://github.com/Gerald1614/weather-server)
 
 
 ## Contributors
