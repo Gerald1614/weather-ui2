@@ -1,4 +1,5 @@
 <template>
+
 <v-container>
  <v-layout px-0 row wrap justify-space-between>
     <v-flex xs3 v-for="(day, index) in forecastDisplay" :key="index">
@@ -33,11 +34,13 @@ export default {
     forecastDisplay () {
       console.log(this.forecastWeatherData)
       let tableDisplay =[]
-        let today= new Date()
+      const today= new Date()
+      let forecastDay = new Date()
       for (let i=0; i<5; i++) {
-        const Day = this.forecastWeatherData.list.filter( dateX => new Date(dateX.dt_txt).getDate() == today.getDate()+i)
+        forecastDay.setDate(today.getDate()+i)
+        let Day = this.forecastWeatherData.list.filter( dateX => new Date(dateX.dt_txt).getDate() === forecastDay.getDate())
         let tmpData={}
-      if (Day.length >4 && tableDisplay.length <4) {
+      if (Day.length >4 && tableDisplay.length <5) {
         tmpData.date =  new Date(today.getFullYear(), today.getMonth(), today.getDate()+i)
         tmpData.minDay = this.getMinDay(Day).toFixed(1)
         tmpData.maxDay = this.getMaxDay(Day).toFixed(1)
@@ -51,10 +54,10 @@ export default {
   },
   methods: {
     getMinDay: (day)  => {
-      return day.reduce((min, p) => p.main.temp < min ? p.main.temp : min, day[0].main.temp);
+      return day.reduce((min, p) => p.main.temp < min ? p.main.temp : min, day[0].main.temp)
     },
     getMaxDay: (day) => {
-      return day.reduce((max, p, index) =>  p.main.temp > max ? p.main.temp : max, day[0].main.temp);
+      return day.reduce((max, p, index) =>  p.main.temp > max ? p.main.temp : max, day[0].main.temp)
     }
   },
   filters: {
@@ -63,7 +66,7 @@ export default {
       return weekDays[value.getDay()]
     },
     date: function (value) {
-      let yearMonths =  ['Jan', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin', 'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec']
+      let yearMonths = ['Jan', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin', 'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec']
       return value.getDate() + ' ' + yearMonths[value.getMonth()]
     }
   }
